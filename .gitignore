@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.venv/
+venv/
+
+# Environment and secrets
+.env
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Logs and reports
+*.log
+reports/
+.cache/

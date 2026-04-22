@@ -1,0 +1,1 @@
+"""Music metadata checker package."""

@@ -1,0 +1,4 @@
+google-genai>=1.0.0
+mutagen>=1.47.0
+python-dotenv>=1.0.1
+tenacity>=9.0.0

@@ -1,0 +1,5 @@
+from music_metadata.runtime_control.cli import main
+
+
+if __name__ == "__main__":
+    main()
