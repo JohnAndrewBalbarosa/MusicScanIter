@@ -115,3 +115,30 @@ The repository groups code docs by reading concern instead of scattering them as
   - [docs/code/03-metadata-processing/service.md](/C:/Users/Drew/Desktop/MusicScanIter/docs/code/03-metadata-processing/service.md)
 - `04-file-organization`
   - [docs/code/04-file-organization/organizer.md](/C:/Users/Drew/Desktop/MusicScanIter/docs/code/04-file-organization/organizer.md)
+
+## Architecture (UML)
+
+```mermaid
+graph TD
+    MAIN["main.py<br/>Entry Point"]
+    CLI["CLI Module<br/>runtime_control<br/>Command Line Interface"]
+    SERVICE["Service<br/>metadata_processing<br/>Orchestration"]
+    AUDIO["Audio Module<br/>Read & Write Tags"]
+    RESEARCH["Research Module<br/>Gemini Suggestions"]
+    ORGANIZER["File Organizer<br/>Move & Rename Files"]
+    
+    MAIN --> CLI
+    CLI -->|Config & Limits| SERVICE
+    SERVICE -->|Read Existing| AUDIO
+    SERVICE -->|Request Metadata| RESEARCH
+    SERVICE -->|Write Updated| AUDIO
+    SERVICE -->|Relocate| ORGANIZER
+    
+    style SERVICE fill:#f9f,stroke:#333,stroke-width:2px
+    style CLI fill:#bbf,stroke:#333,stroke-width:2px
+    style AUDIO fill:#bfb,stroke:#333,stroke-width:2px
+```
+
+**Tech Stack**: Python, python-dotenv, mutagen (audio tags), Gemini API, tenacity (retries)
+
+**Getting Started**: `pip install -r requirements.txt`, create `.env` from `.env.example`, run `python main.py`
