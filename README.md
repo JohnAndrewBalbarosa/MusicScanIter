@@ -8,34 +8,24 @@ Repository: [JohnAndrewBalbarosa/MusicScanIter](https://github.com/JohnAndrewBal
 
 ## Problem and Goal
 
-This project should be read as a technical build: it identifies a concrete workflow or research problem, implements a working system around that problem, and documents enough evidence for another person to understand, run, and evaluate the result.
+**Problem.** Large music libraries accumulate inconsistent tags, filenames, and folder structures that are costly to repair track by track.
 
-Primary goals:
-
-- Explain what the project does and who it is for.
-- Show the architecture and implementation choices.
-- Provide enough setup guidance for local review.
-- Report measured results when available.
-- Make limitations and next steps explicit instead of implying unverified impact.
+**Goal.** Scan a source library, suggest metadata with Gemini, let the user review changes, write tags, and organize copies into a target structure.
 
 ## System Design
 
-Current documented components:
-
-- Documentation folder for architecture, requirements, or supporting notes.
-
-Project tags:
-
-- To be tagged based on the final project stack.
+- `main.py`: CLI entry point and run coordination.
+- `music_metadata/`: scanning, metadata inference, tag writing, and file organization modules.
+- `.env.example`: external model configuration; `docs/`: workflow guidance.
 
 ## Setup and Usage
 
-Use the commands below as the starting point for local setup. Verify environment variables, secrets, datasets, and external services before running production-like workflows.
-
 ```bash
 python -m venv .venv
-source .venv/bin/activate
+source .venv/bin/activate  # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
+cp .env.example .env
+python main.py --help
 ```
 
 ## Evaluation Method
